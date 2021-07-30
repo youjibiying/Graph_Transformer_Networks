@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="80f2b4e4-5157-43ad-b9fc-9d68ac9b3924" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="d3ead2f8-5348-4f63-b89d-0f18a8b0aa52" />
+  <component name="ProjectId" id="1puPVkzbQAWnA9ET3ixTqyJO7w9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../protein-encoder" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\pythonCode\Graph_Transformer_Networks\data\mpnnr_data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.main">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Graph_Transformer_Networks" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" singleton="false" temporary="true" nameIsGenerated="true">
+      <module name="Graph_Transformer_Networks" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="--dataset ACM --num_layers 2 --type hgnn --data cora --add_self_loop --adaptive_lr true --epoch 200" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_gtn" type="PythonConfigurationType" factoryName="Python" singleton="false">
+      <module name="Graph_Transformer_Networks" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="--dataset ACM --num_layers 2 --type gtn --data cora --add_self_loop" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_sparse" type="PythonConfigurationType" factoryName="Python" singleton="false" nameIsGenerated="true">
+      <module name="Graph_Transformer_Networks" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="CUDA_VISIBLE_DEVICES" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_sparse.py" />
+      <option name="PARAMETERS" value="--dataset ACM --num_layers 2 --adaptive_lr true --type hgnn --data arxiv --epoch 200" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="model_sparse" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Graph_Transformer_Networks" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/model_sparse.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main_gtn" />
+      <item itemvalue="Python.main_sparse" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.model_sparse" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.model_sparse" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80f2b4e4-5157-43ad-b9fc-9d68ac9b3924" name="Default Changelist" comment="" />
+      <created>1616030028609</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616030028609</updated>
+      <workItem from="1616030029762" duration="67931000" />
+      <workItem from="1617801382547" duration="599000" />
+      <workItem from="1618476263452" duration="599000" />
+      <workItem from="1618648283525" duration="589000" />
+      <workItem from="1619084470869" duration="53000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="479" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1616675723671">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="479" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616675723671" />
+    <state width="1858" height="466" key="DebuggerActiveHint" timestamp="1616740125425">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1858" height="466" key="DebuggerActiveHint/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616740125425" />
+    <state x="882" y="302" key="EnvironmentVariablesDialog" timestamp="1616122763907">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="882" y="302" key="EnvironmentVariablesDialog/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616122763907" />
+    <state x="862" y="334" key="FileChooserDialogImpl" timestamp="1616914745029">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="862" y="334" key="FileChooserDialogImpl/0.0.2194.1194@0.0.2194.1194" timestamp="1616914745029" />
+    <state x="805" y="311" key="FileChooserDialogImpl/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616030396292" />
+    <state width="2000" height="341" key="GridCell.Tab.0.bottom" timestamp="1616675725491">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1191" height="236" key="GridCell.Tab.0.bottom/0.0.1234.783@0.0.1234.783" timestamp="1616140576310" />
+    <state width="2000" height="341" key="GridCell.Tab.0.bottom/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616675725491" />
+    <state width="2000" height="341" key="GridCell.Tab.0.center" timestamp="1616675725491">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1191" height="236" key="GridCell.Tab.0.center/0.0.1234.783@0.0.1234.783" timestamp="1616140576310" />
+    <state width="2000" height="341" key="GridCell.Tab.0.center/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616675725491" />
+    <state width="2000" height="341" key="GridCell.Tab.0.left" timestamp="1616675725491">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1191" height="236" key="GridCell.Tab.0.left/0.0.1234.783@0.0.1234.783" timestamp="1616140576310" />
+    <state width="2000" height="341" key="GridCell.Tab.0.left/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616675725491" />
+    <state width="2000" height="341" key="GridCell.Tab.0.right" timestamp="1616675725491">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1191" height="236" key="GridCell.Tab.0.right/0.0.1234.783@0.0.1234.783" timestamp="1616140576310" />
+    <state width="2000" height="341" key="GridCell.Tab.0.right/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616675725491" />
+    <state x="526" y="201" key="SettingsEditor" timestamp="1616030403171">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="526" y="201" key="SettingsEditor/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616030403171" />
+    <state width="1031" height="563" key="XDebugger.FullValuePopup" timestamp="1616060065386">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1031" height="563" key="XDebugger.FullValuePopup/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616060065386" />
+    <state x="817" y="441" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1616030397384">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="817" y="441" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616030397384" />
+    <state x="724" y="288" width="600" height="536" key="find.popup" timestamp="1616120947935">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="724" y="288" width="600" height="536" key="find.popup/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616120947935" />
+    <state x="916" y="287" key="ftp.server.browser" timestamp="1616030393169">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="916" y="287" key="ftp.server.browser/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616030393169" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1616124164455">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/2560.209.1080.1870/0.0.2048.1112@0.0.2048.1112" timestamp="1616124164455" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils.py</url>
+          <line>300</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>125</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>95</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>190</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_sparse.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model_sparse.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main_sparse.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils.py</url>
+          <line>239</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model_sparse.py</url>
+          <line>137</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/model.py</url>
+          <line>164</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Graph_Transformer_Networks$main.coverage" NAME="main Coverage Results" MODIFIED="1616675725465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Graph_Transformer_Networks$main_sparse.coverage" NAME="main_sparse Coverage Results" MODIFIED="1616145612172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Graph_Transformer_Networks$main_gtn.coverage" NAME="main_gtn Coverage Results" MODIFIED="1616675594166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

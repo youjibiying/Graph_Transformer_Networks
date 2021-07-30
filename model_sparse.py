@@ -9,7 +9,7 @@ from torch_geometric.utils import dense_to_sparse, f1_score
 from gcn import GCNConv
 from torch_scatter import scatter_add
 import torch_sparse
-import torch_sparse_old
+# import torch_sparse_old
 from torch_geometric.utils.num_nodes import maybe_num_nodes
 from torch_geometric.utils import remove_self_loops, add_self_loops
 
@@ -111,7 +111,8 @@ class GTLayer(nn.Module):
             a_edge, a_value = result_A[i]
             b_edge, b_value = result_B[i]
             
-            edges, values = torch_sparse_old.spspmm(a_edge, a_value, b_edge, b_value, self.num_nodes, self.num_nodes, self.num_nodes)
+            # edges, values = torch_sparse_old.spspmm(a_edge, a_value, b_edge, b_value, self.num_nodes, self.num_nodes, self.num_nodes)
+            edges, values = torch_sparse.spspmm(a_edge, a_value, b_edge, b_value, self.num_nodes, self.num_nodes, self.num_nodes)
             H.append((edges, values))
         return H, W
 
@@ -141,10 +142,10 @@ class GTConv(nn.Module):
             for j, (edge_index,edge_value) in enumerate(A):
                 if j == 0:
                     total_edge_index = edge_index
-                    total_edge_value = edge_value*filter[i][j]
+                    total_edge_value = edge_value*filter[i][j] # 当前A里边的所有元素都乘上 对应solfmax后的值
                 else:
                     total_edge_index = torch.cat((total_edge_index, edge_index), dim=1)
-                    total_edge_value = torch.cat((total_edge_value, edge_value*filter[i][j]))
-            index, value = torch_sparse.coalesce(total_edge_index.detach(), total_edge_value, m=self.num_nodes, n=self.num_nodes)
+                    total_edge_value = torch.cat((total_edge_value, edge_value*filter[i][j])) # 合并成一个batch
+            index, value = torch_sparse.coalesce(total_edge_index.detach(), total_edge_value, m=self.num_nodes, n=self.num_nodes) # 合并
             results.append((index, value))
         return results

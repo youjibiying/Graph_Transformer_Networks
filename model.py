@@ -30,6 +30,7 @@ class GTN(nn.Module):
         self.loss = nn.CrossEntropyLoss()
         self.linear1 = nn.Linear(self.w_out*self.num_channels, self.w_out)
         self.linear2 = nn.Linear(self.w_out, self.num_class)
+        self.dropout = nn.Dropout(p=0.5)
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -38,8 +39,8 @@ class GTN(nn.Module):
 
     def gcn_conv(self,X,H):
         X = torch.mm(X, self.weight)
-        H = self.norm(H, add=True)
-        return torch.mm(H.t(),X)
+        H = self.norm(H, add=True) # A D^{-1}
+        return torch.spmm(H.t(),X)
 
     def normalization(self, H):
         for i in range(self.num_channels):
@@ -51,26 +52,34 @@ class GTN(nn.Module):
 
     def norm(self, H, add=False):
         H = H.t()
+        # H[range(H.shape[0]), range(H.shape[0])] = 0
+        H = H * ((torch.eye(H.shape[0])==0).type_as(H))
+
         if add == False:
-            H = H*((torch.eye(H.shape[0])==0).type(torch.FloatTensor))
+            pass
+            # H = H*((torch.eye(H.shape[0])==0).type(torch.FloatTensor))
         else:
-            H = H*((torch.eye(H.shape[0])==0).type(torch.FloatTensor)) + torch.eye(H.shape[0]).type(torch.FloatTensor)
+            H = H + torch.eye(H.shape[0]).type_as(H)
         deg = torch.sum(H, dim=1)
-        deg_inv = deg.pow(-1)
-        deg_inv[deg_inv == float('inf')] = 0
-        deg_inv = deg_inv*torch.eye(H.shape[0]).type(torch.FloatTensor)
-        H = torch.mm(deg_inv,H)
-        H = H.t()
+        # deg_inv = deg.pow(-1)
+        deg[deg == 0] = 1e9
+        deg_inv = torch.pow(deg, -1)
+        deg_inv[torch.isinf(deg_inv)] = 0
+        # deg_inv[deg_inv == float('inf')] = 0
+        deg_inv = torch.diag(deg_inv)
+        # deg_inv = deg_inv*torch.eye(H.shape[0]).type(torch.FloatTensor)
+        H = deg_inv @ H # D^{-1}*A
+        H = H.t() # 列和为1 A*D^{-1}
         return H
 
     def forward(self, A, X, target_x, target):
-        A = A.unsqueeze(0).permute(0,3,1,2) 
+        A = A.unsqueeze(0).permute(0,3,1,2)  # ACM : 1,5,8994,8994
         Ws = []
         for i in range(self.num_layers):
             if i == 0:
                 H, W = self.layers[i](A)
             else:
-                H = self.normalization(H)
+                H = self.normalization(H) # 每个type adj = A*D^{-1}, 也就是列和为1
                 H, W = self.layers[i](A, H)
             Ws.append(W)
         
@@ -79,12 +88,51 @@ class GTN(nn.Module):
         #H,W2 = self.layer2(A, H)
         #H = self.normalization(H)
         #H,W3 = self.layer3(A, H)
+
+        ## Z=||\sigma(D^{-1}A^{l}XW)
+        # H1=H
+        # H = A.permute(2,0,1)
+        # print(torch.norm((H1-H),1))
         for i in range(self.num_channels):
             if i==0:
-                X_ = F.relu(self.gcn_conv(X,H[i]))
+                X_ = F.relu(self.dropout(self.gcn_conv(X,H[i]))) # (D+I)^{-1}*A*X*W
             else:
-                X_tmp = F.relu(self.gcn_conv(X,H[i]))
-                X_ = torch.cat((X_,X_tmp), dim=1)
+                X_tmp = F.relu(self.dropout(self.gcn_conv(X,H[i])))
+                X_ = torch.cat((X_,X_tmp), dim=1) # ensemble
+
+        X_ = self.linear1(X_)
+        X_ = F.relu(self.dropout(X_))
+        y = self.linear2(X_[target_x])
+        loss = self.loss(y, target)
+        return loss, y, Ws
+
+    def forward1(self, A, X, target_x, target):
+        # A = A.unsqueeze(0).permute(0, 3, 1, 2)  # ACM : 1,5,8994,8994
+        # Ws = []
+        # for i in range(self.num_layers):
+        #     if i == 0:
+        #         H, W = self.layers[i](A)
+        #     else:
+        #         H = self.normalization(H)  # 每个type adj = A*D^{-1}, 也就是列和为1
+        #         H, W = self.layers[i](A, H)
+        #     Ws.append(W)
+
+        # H,W1 = self.layer1(A)
+        # H = self.normalization(H)
+        # H,W2 = self.layer2(A, H)
+        # H = self.normalization(H)
+        # H,W3 = self.layer3(A, H)
+
+        ## Z=||\sigma(D^{-1}A^{l}XW)
+        H = A.permute(2,0,1)
+        Ws= 0
+        for i in range(self.num_channels):
+            if i == 0:
+                X_ = F.relu(self.gcn_conv(X, H[i]))  # (D+I)^{-1}*A*X*W
+            else:
+                X_tmp = F.relu(self.gcn_conv(X, H[i]))
+                X_ = torch.cat((X_, X_tmp), dim=1)  # ensemble
+
         X_ = self.linear1(X_)
         X_ = F.relu(X_)
         y = self.linear2(X_[target_x])
@@ -99,21 +147,23 @@ class GTLayer(nn.Module):
         self.out_channels = out_channels
         self.first = first
         if self.first == True:
-            self.conv1 = GTConv(in_channels, out_channels)
+            self.conv1 = GTConv(in_channels, out_channels) #
             self.conv2 = GTConv(in_channels, out_channels)
         else:
             self.conv1 = GTConv(in_channels, out_channels)
     
     def forward(self, A, H_=None):
-        if self.first == True:
+        W=None
+        if self.first == True: # 第一次层，需要产生两个
             a = self.conv1(A)
             b = self.conv2(A)
             H = torch.bmm(a,b)
-            W = [(F.softmax(self.conv1.weight, dim=1)).detach(),(F.softmax(self.conv2.weight, dim=1)).detach()]
+            # H = torch.bmm(a,b)
+            # W = [(F.softmax(self.conv1.weight, dim=1)).detach(),(F.softmax(self.conv2.weight, dim=1)).detach()]
         else:
-            a = self.conv1(A)
-            H = torch.bmm(H_,a)
-            W = [(F.softmax(self.conv1.weight, dim=1)).detach()]
+            a = self.conv1(A) # 生成新的Q^(l)
+            H = torch.bmm(H_,a) # A^{l-1}*Q^{l}
+            # W = [(F.softmax(self.conv1.weight, dim=1)).detach()]
         return H,W
 
 class GTConv(nn.Module):
@@ -122,7 +172,7 @@ class GTConv(nn.Module):
         super(GTConv, self).__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels
-        self.weight = nn.Parameter(torch.Tensor(out_channels,in_channels,1,1))
+        self.weight = nn.Parameter(torch.Tensor(out_channels,in_channels,1,1), requires_grad=True)
         self.bias = None
         self.scale = nn.Parameter(torch.Tensor([0.1]), requires_grad=False)
         self.reset_parameters()
@@ -135,5 +185,8 @@ class GTConv(nn.Module):
             nn.init.uniform_(self.bias, -bound, bound)
 
     def forward(self, A):
-        A = torch.sum(A*F.softmax(self.weight, dim=1), dim=1)
+        # if (A == float('-inf')).sum() or (A == float('inf')).sum():
+        #     print('-=----inf')
+        # A = torch.sum(A.contiguous()*F.softmax(self.weight, dim=1), dim=1) # self.weight.shape = [2,5,1,1]
+        A = torch.sum(A.contiguous()*F.softmax(self.weight, dim=1), dim=1) # self.weight.shape = [2,5,1,1]
         return A
